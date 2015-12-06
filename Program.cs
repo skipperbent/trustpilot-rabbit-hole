@@ -22,7 +22,11 @@ namespace thetruth
 
 			Thread.CurrentThread.Priority = ThreadPriority.Highest;
 
-			var result = GetMagicWord();
+			var anagramWords = AnagramText.Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
+
+			// Try first assuming that the words always have the same length (it's fast so worth the try), otherwise try all matching words.
+
+			var result = GetMagicWord(anagramWords[0].Length, anagramWords[1].Length, anagramWords[2].Length) ?? GetMagicWord();
 
 			Console.Clear();
 
@@ -77,11 +81,18 @@ namespace thetruth
 
 		protected static ResultPhrase GetMagicWord()
 		{
+			return GetMagicWord(null, null, null);
+		}
+
+		protected static ResultPhrase GetMagicWord(int? word1MaxLength, int? word2MaxLength, int? word3MaxLength)
+		{
 			string[] words = File.ReadAllLines(AppDomain.CurrentDomain.BaseDirectory + DictionaryFile);
 			var anagramWords = AnagramText.Split(new []{ ' ' }, StringSplitOptions.RemoveEmptyEntries);
 			var anagramChars = new String(AnagramText.Replace(" ", String.Empty).Distinct().ToArray());
 
-			var matches = (from word in words from anagramWord in anagramWords where anagramWord.Length >= word.Length let charactersMatches = word.ToCharArray().Count(c => anagramChars.Contains(c)) where charactersMatches == word.Length select word).Distinct().ToArray();
+			var matches = (from word in words from anagramWord in anagramWords where anagramWord.Length <= word.Length let charactersMatches = word.ToCharArray().
+			Count(c => anagramChars.Contains(c)) where charactersMatches == word.Length select word).
+			Distinct().ToArray();
 
 			// Based on the benchmark here, we create a for loop with arrays to improve performance
 			// http://codebetter.com/patricksmacchia/2008/11/19/an-easy-and-efficient-way-to-improve-net-code-performances/
@@ -91,7 +102,7 @@ namespace thetruth
 				var word1 = matches[i1];
 
 				// Skip if the first word doesnt match the length of the anagrams first word
-				if (word1.Length > anagramWords[0].Length)
+				if (word1MaxLength != null && word1.Length < word1MaxLength)
 				{
 					continue;
 				}
@@ -103,7 +114,7 @@ namespace thetruth
 					var phrase = GeneratePhrase(word1, word2);
 
 					// Skip if the word is longer than the anagram or if it matches the anagrams second word
-					if (word1 == word2 || phrase.Length > AnagramText.Length || word2.Length != anagramWords[1].Length || !ValidatePhrase(phrase))
+					if (word2MaxLength != null && word2.Length < word2MaxLength || word1 == word2 || phrase.Length > AnagramText.Length || !ValidatePhrase(phrase))
 					{
 						continue;
 					}
@@ -116,7 +127,7 @@ namespace thetruth
 
 						// Skip if the word is longer than the anagram or if it matches the anagrams third word
 						// ValidatePhrase ensures that only characters in the same number as the in the anagram.
-						if (word2 == word3 || word3 == word1 || word3.Length != anagramWords[2].Length || phrase.Length != AnagramText.Length || !ValidatePhrase(phrase))
+						if (word3MaxLength != null && word3.Length < word3MaxLength || word2 == word3 || word3 == word1 || word3.Length != anagramWords[2].Length || !ValidatePhrase(phrase))
 						{
 							continue;
 						}
