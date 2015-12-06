@@ -9,7 +9,7 @@ http://followthewhiterabbit.trustpilot.com/
 
 ## Screenshot
 
-![Screenshot](https://github.com/skipperbent/trustpilot-rabbit-hole/blob/master/screenshot_1.png?raw=true)
+![Screenshot](https://github.com/skipperbent/trustpilot-rabbit-hole/blob/master/screenshot.gif?raw=true)
 
 ### Understanding the problem and not over-analyzing it - will bring you one step further to solving the puzzle.
 
