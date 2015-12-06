@@ -20,6 +20,8 @@ This allows us to creating a combination of every word provided in the dictionar
 
 - Okay, now we've got a list of around ```790``` words. This is still way to many, as it can contain combinations of ```790 * 790 * 790```, which is way more than 1 million combinations.
 
+- By doing this we've already increase the chance dramaticly for finding the correct word, but it there's still too many combinations. So let's filter even more. There's a very small chance that the "magic word" has the same number of letters for each words, so let's take that chance and filter even further. It will increase the speed dramatically, so it's worth the try.
+
 - By looping through these words and ensuring that only characters appear the number of times that they do in the anagram-phrase, and that the total phrase-word is not greather- or less than the anagram length, we can actually filter even further on the list above.
 
 - That's pretty much it!
