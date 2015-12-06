@@ -81,7 +81,7 @@ namespace thetruth
 			var anagramWords = AnagramText.Split(new []{ ' ' }, StringSplitOptions.RemoveEmptyEntries);
 			var anagramChars = new String(AnagramText.Replace(" ", String.Empty).Distinct().ToArray());
 
-			var matches = (from word in words from anagramWord in anagramWords where anagramWord.Length == word.Length let charactersMatches = word.ToCharArray().Count(c => anagramChars.Contains(c)) where charactersMatches == word.Length select word).Distinct().ToArray();
+			var matches = (from word in words from anagramWord in anagramWords where anagramWord.Length >= word.Length let charactersMatches = word.ToCharArray().Count(c => anagramChars.Contains(c)) where charactersMatches == word.Length select word).Distinct().ToArray();
 
 			// Based on the benchmark here, we create a for loop with arrays to improve performance
 			// http://codebetter.com/patricksmacchia/2008/11/19/an-easy-and-efficient-way-to-improve-net-code-performances/
@@ -91,7 +91,7 @@ namespace thetruth
 				var word1 = matches[i1];
 
 				// Skip if the first word doesnt match the length of the anagrams first word
-				if (word1.Length != anagramWords[0].Length)
+				if (word1.Length > anagramWords[0].Length)
 				{
 					continue;
 				}

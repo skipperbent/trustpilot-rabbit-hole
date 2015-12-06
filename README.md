@@ -22,8 +22,6 @@ This allows us to creating a combination of every word provided in the dictionar
 
 - Let's filter the word-list so it only shows the words containing the characters from ```poultry outwits ants```. So ```p```, ```o```, ```u```, ```l``` should be present within the word in the dictionary... you get the point.
 
-- By doing this we've already increase the chance dramaticly for finding the correct word, but it there's still too many combinations. So let's filter even more. There's a chance that the "magic word" has the same number of letters for each words, let's take that chance and filter even further - even though it's a chance, it will increase the speed of finding our word, so it's worth the try.
-
 - Okay, now we've got a list of around ```790``` words. This is still way to many, as it can contain combinations of ```790 * 790 * 790```, which is way more than 1 million combinations.
 
 - By looping through these words and ensuring that only characters appear the number of times that they do in the anagram-phrase, and that the total phrase-word is not greather- or less than the anagram length, we can actually filter even further on the list above.
