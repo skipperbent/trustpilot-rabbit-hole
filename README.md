@@ -1,5 +1,5 @@
 ﻿# trustpilot-rabbit-hole test
-My take on creating the algorithm for finding the magic word in TrustPilot's rabbit hole job-test. This project finds the rigt combination for the "magic word" in around 0.4 seconds using a very simple algorithm called "common sense".
+My take on creating the algorithm for finding the magic word in TrustPilot's rabbit hole job-test. This project finds the right combination for the "magic word" using a very simple algorithm.
 
 ## The mission
 
@@ -10,10 +10,6 @@ http://followthewhiterabbit.trustpilot.com/
 ## Screenshot
 
 ![Screenshot](https://github.com/skipperbent/trustpilot-rabbit-hole/blob/master/screenshot.gif?raw=true)
-
-### Understanding the problem and not over-analyzing it - will bring you one step further to solving the puzzle.
-
-There's no great mathematics behind the algorithm. For me, it's all based on common sense. Imagine you have the words infront of you, like psychial, touchable object. What would you then do to find the correct word you were looking for? Personally, I would remove the objects that I knew  weren't what I was looking for, increasing my chance on success - using the information I know about the item i want to find.
 
 **Enough wierd talk, let's try to break it down into steps...**
 
