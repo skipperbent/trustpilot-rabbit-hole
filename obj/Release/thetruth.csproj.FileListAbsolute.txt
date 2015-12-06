@@ -1,0 +1,8 @@
+D:\Visual Studio\thetruth\bin\Release\thetruth.exe.config
+D:\Visual Studio\thetruth\bin\Release\Clubbed_to_Death.mid
+D:\Visual Studio\thetruth\bin\Release\wordlist
+D:\Visual Studio\thetruth\bin\Release\thetruth.exe
+D:\Visual Studio\thetruth\bin\Release\thetruth.pdb
+D:\Visual Studio\thetruth\obj\Release\thetruth.exe
+D:\Visual Studio\thetruth\obj\Release\thetruth.pdb
+D:\Visual Studio\thetruth\obj\Release\thetruth.csprojResolveAssemblyReference.cache
