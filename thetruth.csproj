@@ -43,10 +43,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Anagram.cs" />
     <Compile Include="MciPlayer.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ResultPhrase.cs" />
+    <Compile Include="AnagramResultPhrase.cs" />
+    <Compile Include="PhraseEventArg.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
